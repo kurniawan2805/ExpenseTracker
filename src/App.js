@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
-import './App.css';
-import ExpenseItem from './components/ExpenseItem';
+// import './App.css';
+// import ExpenseItem from './components/ExpenseItem';
+import Expenses from './components/Expenses';
 
 function App() {
   const expenses = [
@@ -16,22 +17,17 @@ function App() {
       amount: 27.69,
       date: new Date(2021, 2, 29)
     },
-
+    {
+      id: 3,
+      title: 'Internet',
+      amount: 17.49,
+      date: new Date(2021, 2, 27)
+    },
   ]
-
-  const myExp = expenses.map(expense => {
-    return (
-      <ExpenseItem
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      ></ExpenseItem>)
-  })
-
-  console.log(myExp);
   return (
     <div>
-      <h2> Tes Let's get started!</h2>
+      <h2>Let's get started!</h2>
+      <Expenses expenses={expenses} />
       {/* <ExpenseItem
         title={expenses[0].title}
         amount={expenses[0].amount}
@@ -42,7 +38,7 @@ function App() {
         amount={expenses[1].amount}
         date={expenses[1].date}
       ></ExpenseItem> */}
-      {myExp}
+      {/* {myExp} */}
     </div>
 
 
