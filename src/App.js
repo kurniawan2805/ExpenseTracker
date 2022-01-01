@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 // import './App.css';
 // import ExpenseItem from './components/ExpenseItem';
-import Expenses from './components/Expenses';
+import Expenses from './components/Expenses/Expenses';
 
 function App() {
   const expenses = [
@@ -15,7 +15,7 @@ function App() {
       id: 2,
       title: 'Electricity',
       amount: 27.69,
-      date: new Date(2021, 2, 29)
+      date: new Date(2021, 0, 29)
     },
     {
       id: 3,
