@@ -6,18 +6,15 @@ const ExpenseForm = (props) => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState(0);
     const [enteredDate, setEnteredDate] = useState('');
-    const [isSelected, setIsSelected] = useState(false);
+    // const [isSelected, setIsSelected] = useState(false);
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
-        // console.log("Title Changed!", event.target.value);
     }
     const amountChangeHandler = (event) => {
         setEnteredAmount(event.target.value)
-        // console.log("Amount Changed!")
     }
     const dateChangeHandler = (event) => {
         setEnteredDate(event.target.value)
-        // console.log("Date Changed!")
     }
 
     const submitHandler = (event) => {
@@ -27,23 +24,19 @@ const ExpenseForm = (props) => {
             amount: enteredAmount,
             date: new Date(enteredDate) //should format to date format
         }
-        // console.log(expenseDate);
-        // console.log(props);
         props.onSaveExpenseData(expenseDate);
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate('');
-        setIsSelected(false)
+        // setIsSelected(false)
     }
 
-    // let isSelected = true;
-
-    if (!isSelected) {
-        return (
-            <div className="new-expense__actions">
-                <button type="button" onClick={(prevData) => setIsSelected(true)}>Add New Expense</button>
-            </div>)
-    }
+    // if (!isSelected) {
+    //     return (
+    //         <div className="new-expense__actions">
+    //             <button type="button" onClick={(prevData) => setIsSelected(true)}>Add New Expense</button>
+    //         </div>)
+    // }
     return (<form onSubmit={submitHandler}>
         <div className="new-expense__controls">
             <div className="new-expense__control">
@@ -68,13 +61,10 @@ const ExpenseForm = (props) => {
             </div>
         </div>
         <div className="new-expense__actions">
-            <button type="button" onClick={() => setIsSelected(false)}>Cancel</button>
+            <button type="button" onClick={() => props.onCancel()}>Cancel</button>
             <button type="submit">Add Expense</button>
         </div>
     </form>)
-
-
-
 }
 
 export default ExpenseForm;
