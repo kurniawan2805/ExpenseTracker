@@ -6,6 +6,7 @@ const ExpenseForm = (props) => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState(0);
     const [enteredDate, setEnteredDate] = useState('');
+    const [isSelected, setIsSelected] = useState(false);
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
         // console.log("Title Changed!", event.target.value);
@@ -27,13 +28,23 @@ const ExpenseForm = (props) => {
             date: new Date(enteredDate) //should format to date format
         }
         // console.log(expenseDate);
-        console.log(props);
+        // console.log(props);
         props.onSaveExpenseData(expenseDate);
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate('');
+        setIsSelected(false)
     }
-    return <form onSubmit={submitHandler}>
+
+    // let isSelected = true;
+
+    if (!isSelected) {
+        return (
+            <div className="new-expense__actions">
+                <button type="button" onClick={(prevData) => setIsSelected(true)}>Add New Expense</button>
+            </div>)
+    }
+    return (<form onSubmit={submitHandler}>
         <div className="new-expense__controls">
             <div className="new-expense__control">
                 <label>Title</label>
@@ -57,9 +68,13 @@ const ExpenseForm = (props) => {
             </div>
         </div>
         <div className="new-expense__actions">
-            <button type="submit" >Add Expense</button>
+            <button type="button" onClick={() => setIsSelected(false)}>Cancel</button>
+            <button type="submit">Add Expense</button>
         </div>
-    </form>
+    </form>)
+
+
+
 }
 
 export default ExpenseForm;

@@ -5,6 +5,8 @@ import './NewExpense.css'
 
 
 const NewExpense = (props) => {
+    // const [isSelected, setIsSelected] = useState(false);
+    // let isSelected = false;
     const saveExpenseDataHandler = (enteredExpenseData) => {
         const expenseData = {
             ...enteredExpenseData,
@@ -13,9 +15,11 @@ const NewExpense = (props) => {
         // console.log(expenseData)
         props.onAddExpense(expenseData);
     };
+
     return <div className="new-expense">
         <ExpenseForm onSaveExpenseData={saveExpenseDataHandler}></ExpenseForm>
     </div>
+
 }
 
 export default NewExpense;
