@@ -2,6 +2,8 @@
 // import './App.css';
 // import ExpenseItem from './components/ExpenseItem';
 import Expenses from './components/Expenses/Expenses';
+import NewExpense from './components/NewExpense/NewExpense';
+
 
 function App() {
   const expenses = [
@@ -9,7 +11,7 @@ function App() {
       id: 1,
       title: 'Car Insurance',
       amount: 247.69,
-      date: new Date(2021, 2, 28)
+      date: new Date(2020, 2, 28)
     },
     {
       id: 2,
@@ -21,12 +23,30 @@ function App() {
       id: 3,
       title: 'Internet',
       amount: 17.49,
-      date: new Date(2021, 2, 27)
+      date: new Date(2022, 2, 27)
     },
-  ]
+    {
+      id: 4,
+      title: 'Grocery',
+      amount: 57.49,
+      date: new Date(2019, 2, 2)
+    },
+    {
+      id: 5,
+      title: 'Beverage',
+      amount: 7.49,
+      date: new Date(2019, 5, 2)
+    },
+  ];
+
+  const addExpenseHandler = (expense) => {
+    // console.log('from App');
+    // console.log(expense);
+  }
   return (
     <div>
       <h2>Expense Tracker</h2>
+      <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
       <Expenses expenses={expenses} />
       {/* <ExpenseItem
         title={expenses[0].title}

@@ -1,9 +1,28 @@
+import react, { useState } from 'react';
+
 import './Expenses.css';
 import ExpenseItem from './ExpenseItem';
 import Card from '../UI/Card';
+import ExpensesFilter from './ExpensesFilter';
 
 function Expenses(props) {
-    const expense = props.expenses.sort((a, b) => a.date > b.date ? 1 : -1).map(
+    const [year, setYear] = useState('');
+    // let setYear = '';
+
+    // const filteredExpenses = [];
+    const handleFilterSelect = (value) => {
+        // console.log(value);
+        // filteredExpenses = 
+        setYear(value);
+
+
+        // filteredExpenses 
+        // console.log(value, props.expenses[1].date.getFullYear(), filteredExpenses);
+    }
+    // console.log(handleFilterSelect())
+
+    const filteredExpenses = (year === '') ? props.expenses : props.expenses.filter(expense => expense.date.getFullYear().toString() === year);
+    const expense = filteredExpenses.sort((a, b) => a.date > b.date ? 1 : -1).map(
         (expense) => {
             return (
                 <ExpenseItem
@@ -14,11 +33,15 @@ function Expenses(props) {
                 ></ExpenseItem>
             );
         }
-    )
+    );
+    console.log(year, filteredExpenses);
     return (
-        <Card className="expenses">
-            {expense}
-        </Card>
+        <div>
+            <ExpensesFilter onFilterSelect={handleFilterSelect} />
+            <Card className="expenses">
+                {expense}
+            </Card>
+        </div>
     )
 
 }
