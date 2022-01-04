@@ -48,8 +48,6 @@ function App() {
       return [expenseData, ...prevExpenses];
     }); //clean way to update using function from previous state
   }
-
-  console.log(expenses);
   return (
     <div>
       <h2>Expense Tracker</h2>
